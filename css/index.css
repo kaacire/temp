@@ -1,0 +1,346 @@
+:root {
+  --bg: #ebc597;
+  --text-p: #fff;
+  --text-h: #5e4831;
+  --text-h3: #d8a772;
+  --bg-sec-color: #2a1b0f;
+  --bg-four-color: #a77247;
+  --bg-terc-color: #1b1b1b;
+  --bg-fem-color: #442a17;
+  --bg-mas-color: #643f1c;
+
+  --glow: #fcb3085e;
+  --charm: #f5980c;
+
+  --font-family-h: "Cormorant Garamond", serif;
+  --font-family-p: "Hind Siliguri", sans-serif;
+}
+
+body {
+  font-family: var(--font-family-p);
+  word-spacing: 1px;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family-h);
+}
+
+h1 span {
+  font-size: clamp(0.3rem, 1.5vw, 1.5rem);
+  color: var(--text-h3);
+}
+
+.transition0 {
+  height: 75px;
+  background: linear-gradient(to top, var(--bg), #000);
+}
+
+/* - HERO SLIDER - */
+.hero-slider {
+  position: relative;
+  width: 100%;
+
+  margin-top: 54px;
+  height: clamp(200px, 52vw, 780px);
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-slider .slide2 {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero-slider .slide2.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-slider img {
+  width: 100%;
+  height: 100%;
+
+  object-position: center;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  transition: none;
+  display: block;
+}
+
+.hero-slider .slide2.active img {
+  transform: scale(1.05);
+}
+
+/*  DESTAQUES  */
+.h2 {
+  font-size: clamp(1.1rem, 4vw, 2rem);
+  color: var(--text-h);
+  font-weight: 600;
+  padding: 1em 0.75em;
+  border-bottom: 3px solid white;
+  text-align: center;
+}
+
+.bg {
+  background-color: var(--bg-sec-color);
+  padding: 0.75em 0 1em;
+}
+
+/* wrapper que contém setas + carrossel */
+.cards-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  padding: 0 38px;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.45s ease;
+  /* impede que o track "vaze" */
+  will-change: transform;
+}
+
+/* - Card individual - */
+.card {
+  /* largura fixa: mostra ~2.4 cards em 360px, escala suave */
+  width: clamp(130px, 40vw, 313px);
+  min-width: 0;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: 0.5s;
+}
+.card:hover {
+  background-color: var(--glow);
+}
+
+.card img {
+  width: 100%;
+  height: clamp(140px, 38vw, 260px);
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: transparent;
+  padding: 0.4em;
+}
+
+.card h3 {
+  font-size: clamp(0.7rem, 2.2vw, 1.1rem);
+  color: var(--text-h3);
+  padding: 0.25em 0.4em;
+
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.card p {
+  font-size: clamp(0.68rem, 2.2vw, 0.88rem);
+  color: var(--text-p);
+  padding: 0.1em 0.4em 0.6em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Hind Siliguri", serif;
+}
+
+/* ── Setas do carrossel ── */
+.arrow {
+  position: absolute;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left3 {
+  left: 0;
+}
+.right3 {
+  right: 0;
+}
+
+/* =============================================
+   SLIDER FEMININO / MASCULINO
+   ============================================= */
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  height: clamp(210px, 54vw, 320px);
+  margin: 1.5em auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.button {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+  padding: 0 4px;
+}
+
+.button button {
+  pointer-events: all;
+  width: clamp(34px, 9vw, 50px);
+  height: clamp(34px, 9vw, 50px);
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    transform 0.2s;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button button:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* slides */
+.slide {
+  position: absolute;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: 0;
+  opacity: 0;
+  text-align: center;
+}
+
+.slide img {
+  width: clamp(150px, 18vw, 190px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.slide h3 {
+  font-size: clamp(0.8rem, 2.8vw, 1.1rem);
+  color: var(--text-h3);
+  margin-top: 0.4em;
+  font-family: "Hind Siliguri", serif;
+}
+
+.slide p {
+  font-size: clamp(0.7rem, 2.4vw, 0.95rem);
+  color: var(--text-p);
+}
+
+.slide.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.slide.active h3 {
+  text-shadow: 2px 2px 5px var(--glow);
+}
+.slide.active:hover {
+  color: var(--text-p);
+}
+
+.slide.left {
+  transform: translate(calc(-50% - clamp(70px, 20vw, 200px)), -50%) scale(0.8);
+  opacity: 0.45;
+  z-index: 2;
+  filter: blur(2px);
+}
+
+.slide.right {
+  transform: translate(calc(-50% + clamp(70px, 20vw, 200px)), -50%) scale(0.8);
+  opacity: 0.45;
+  z-index: 2;
+  filter: blur(1px);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .cards-section {
+    padding: 0 32px;
+  }
+  .slider {
+    height: auto;
+    min-height: 280px;
+  }
+
+  .slide.left,
+  .slide.right {
+    display: none;
+  }
+}
+
+@media (max-width: 300px) {
+  .slide.left,
+  .slide.right {
+    display: none;
+  }
+
+  .hero-slider {
+    height: 190px;
+  }
+
+  .card {
+    width: 120px;
+  }
+
+  .slider {
+    height: 200px;
+  }
+}

@@ -1,0 +1,257 @@
+:root {
+  --bg: #ebc597;
+  --text-p: #fff;
+  --text-h: #5e4831;
+  --text-h3: #d8a772;
+  --bg-sec-color: #2a1b0f;
+  --bg-four-color: #a77247;
+  --bg-terc-color: #1b1b1b;
+  --bg-fem-color: #442a17;
+  --bg-mas-color: #643f1c;
+}
+
+main {
+  margin-top: clamp(4em, 12vw, 7em);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+}
+
+/* === CAIXAS === */
+.produto,
+.empyty {
+  text-align: center !important;
+  font-family: "Hind Siliguri", serif;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 860px;
+  text-align: center;
+  padding: clamp(1.2em, 5vw, 2.5em) clamp(0.75em, 4vw, 1.5em);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bg-mas-color);
+  color: var(--text-p);
+}
+.form-box-2 {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: clamp(1.2em, 5vw, 2.5em) clamp(0.75em, 4vw, 1.5em);
+  border-radius: 8px;
+}
+
+.resumo {
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  padding: clamp(1.2em, 5vw, 2.5em) clamp(0.75em, 4vw, 1.5em);
+  border-radius: 8px;
+
+  background-color: var(--bg-terc-color);
+  color: var(--text-p);
+}
+
+.form-box-2 {
+  background-color: var(--bg-four-color);
+  color: var(--text-p);
+}
+
+.form-box h2,
+.form-box-2 h2 {
+  font-size: clamp(1.1rem, 4.5vw, 1.8rem);
+  margin-bottom: 0.75em;
+  color: var(--bg);
+}
+.form-box,
+.form-box-2 {
+  box-shadow: 5px 5px 0px var(--bg-terc-color);
+}
+
+/* === LISTA DE PRODUTOS NO CARRINHO === */
+#produtosCarrinho {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8em;
+  width: 100%;
+  margin-top: 1em;
+}
+
+/* card individual de produto no carrinho */
+#produtosCarrinho .item-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  padding: 0.75em;
+  text-align: left;
+}
+
+#produtosCarrinho img {
+  width: clamp(50px, 12vw, 80px);
+  height: auto;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* resumo */
+#subtotal,
+#frete,
+#totalFinal,
+#parcela {
+  font-size: clamp(0.85rem, 3vw, 1.05rem);
+  margin: 0.3em 0;
+  line-height: 1.5;
+  font-family: "Hind Siliguri";
+  font-weight: 400;
+}
+
+/* === FORMULÁRIO === */
+#formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75em;
+  margin-top: 0.5em;
+}
+
+#formulario input,
+#formulario select {
+  border: none;
+  border-radius: 4px;
+  padding: 0.6em 1em;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-family: "Cormorant Garamond", serif;
+  width: 100%;
+  background: #fff;
+  color: #333;
+}
+
+#formulario select {
+  text-align: left;
+  cursor: pointer;
+}
+
+#formulario button[type="submit"] {
+  padding: 0.65em 1em;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--bg-sec-color);
+  color: #fff;
+  transition: background 0.25s;
+  width: 100%;
+  letter-spacing: 0.03em;
+}
+
+#formulario button[type="submit"]:hover {
+  background: #1a0e05;
+}
+
+#total {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--bg);
+  margin-top: 1em;
+}
+
+/* controle de quantidade */
+.controle-quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 0.4em 0;
+}
+
+.controle-quantidade button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  background: var(--bg-four-color);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.controle-quantidade button:hover {
+  background: var(--bg-mas-color);
+}
+
+.controle-quantidade span {
+  min-width: 24px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* botão remover */
+.remover-item {
+  margin-top: 0.4em;
+  padding: 0.3em 0.8em;
+  border: none;
+  border-radius: 4px;
+  background: #7a1f1f;
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remover-item:hover {
+  background: #a82929;
+}
+
+/* ============================================================
+   MEDIA QUERIES
+   ============================================================ */
+
+/* tablets: coloca as duas caixas lado a lado */
+@media (min-width: 700px) {
+  main {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5em 2em;
+  }
+
+  .produto,
+  .empyty {
+    font-size: 10px;
+  }
+
+  .form-box,
+  .form-box-2 {
+    flex: 1 1 300px;
+    max-width: 460px;
+  }
+}
+
+/* 360px mínimo */
+@media (max-width: 330px) {
+  main {
+    padding: 0.75em 0.5em;
+  }
+
+  .form-box,
+  .form-box-2 {
+    padding: 1em 0.6em;
+    max-width: 300px;
+  }
+
+  #formulario input,
+  #formulario select {
+    padding: 0.5em 0.7em;
+    font-size: 0.82rem;
+  }
+}

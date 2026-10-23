@@ -1,0 +1,232 @@
+.produtos {
+  margin-top: clamp(4em, 12vw, 7em);
+  z-index: 12;
+  padding: 1em;
+}
+
+#adicionarCarrinho {
+  margin-bottom: 1em;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  border: none;
+  border-radius: 6px;
+  background-color: var(--bg-four-color);
+  color: var(--text-p);
+  transition: 0.3s;
+}
+
+.produtos > button {
+  margin-bottom: 1em;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  border: none;
+  border-radius: 6px;
+  background-color: var(--bg-sec-color);
+  color: var(--text-p);
+  transition: 0.3s;
+}
+
+.produtos h2 {
+  font-size: clamp(1.2rem, 4.5vw, 2rem);
+  margin-bottom: 0.5em;
+}
+
+/* === DETALHE DO PRODUTO === */
+.produto2 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  padding: 1em 0;
+}
+
+.colun1 {
+  flex: 1 1 clamp(140px, 40vw, 320px);
+  max-width: 380px;
+  padding-left: 0;
+  border-radius: 20px;
+  background-color: var(--bg-sec-color);
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+}
+.colun1:hover {
+  background-color: var(--bg-four-color);
+}
+
+.char {
+  width: 100%;
+  max-width: 280px;
+  position: relative;
+  display: block;
+}
+
+.char img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.char::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.colun2 {
+  flex: 1 1 clamp(200px, 50vw, 480px);
+  z-index: 2;
+  text-align: justify;
+  padding: 0 0.5em;
+}
+
+.colun2 h2 {
+  font-size: clamp(1.1rem, 4.5vw, 2rem);
+  color: var(--text-p);
+  text-shadow: 2px 1.5px 0px var(--text-h2);
+  margin-bottom: 0.4em;
+}
+
+.colun2 p {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  line-height: 1.5;
+  margin-bottom: 0.5em;
+}
+
+#preco {
+  color: var(--text-p);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  text-shadow: 1px 1px 0px var(--bg-sec-color);
+}
+#descricao {
+  max-width: 520px;
+  color: var(--bg-mas-color);
+}
+.main label {
+  color: var(--text-p);
+}
+
+/* controle de quantidade + botões */
+.produto-detalhe label {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+}
+
+.produto-detalhe input[type="number"] {
+  width: clamp(60px, 20vw, 80px);
+  padding: 0.3em 0.5em;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0.3em 0;
+}
+
+.produto-detalhe button#comprar {
+  padding: 0.5em 1.2em;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  cursor: pointer;
+  border: none;
+  background: var(--bg-sec-color);
+  color: #fff;
+  border-radius: 6px;
+  margin-top: 0.5em;
+  transition: 0.3s;
+}
+
+.produto-detalhe button#comprar:hover,
+.VP-button:hover,
+.produtos > button:hover {
+  background: var(--bg-four-color);
+}
+
+.VP-button {
+  padding: 0.3em 0.6em;
+  font-size: clamp(0.3rem, 25vw, 0.9rem);
+  cursor: pointer;
+  border: none;
+  background: var(--bg-sec-color);
+  color: #fff;
+  border-radius: 6px;
+  margin-top: 0.5em;
+  transition: 0.3s;
+}
+
+/* === PRODUTOS RELACIONADOS === */
+.bg-color {
+  background-color: var(--bg-four-color);
+  padding: 1em;
+}
+
+#relacionados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.produto {
+  background-color: var(--bg-mas-color);
+  border: 2px solid #fff;
+  border-radius: 20px;
+}
+
+#relacionados h3 {
+  color: var(--text-h3);
+}
+#relacionados p {
+  color: var(--text-p);
+}
+
+/* ============================================================
+   RESPONSIVIDADE EXTRA — 480px e 360px
+   ============================================================ */
+@media (max-width: 480px) {
+  #relacionados {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .produto2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .colun1,
+  .colun2 {
+    flex: unset;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .colun2 {
+    text-align: left;
+  }
+
+  .char {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .bg-color {
+    padding: 1.5em;
+  }
+}
+
+@media (max-width: 360px) {
+  .produtos {
+    padding: 0.75em 0.5em;
+  }
+
+  .colun2 h2 {
+    font-size: 1rem;
+  }
+}
