@@ -65,7 +65,7 @@ section {
   will-change: transform;
 }
 .card {
-  width: clamp(140px, 40vw, 260px);
+  width: calc((100% - 3 * 16px) / 4);
   flex-shrink: 0;
   border-radius: var(--radius);
   overflow: hidden;
@@ -529,4 +529,28 @@ section {
 }
 .vitrine-alt .vitrine-all:hover {
   color: var(--charm);
+}
+
+@media (max-width: 999px) {
+  .card {
+    width: calc((100% - 2 * 16px) / 3);
+  }
+}
+@media (max-width: 599px) {
+  .card {
+    width: calc((100% - 16px) / 2);
+  }
+}
+@media (max-width: 480px) {
+  .cards-section {
+    padding: 0 44px;
+  }
+}
+@media (max-width: 600px) {
+  .vcard {
+    flex: 0 0 100%;
+  }
+  .vcard-media {
+    aspect-ratio: 4 / 3;
+  }
 }
