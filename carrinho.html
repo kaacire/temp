@@ -32,7 +32,7 @@
 <body>
 
 <header>
-  <h1>Carrinho | Formulário</h1>
+  <h1>Carrinho</h1>
   <div class="nav-overlay" id="navOverlay"></div>
   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
     <span></span>
@@ -42,60 +42,79 @@
  
   <nav id="mainNav">
     <a href="index.html">Início</a>
+    <a href="catalogo.html">Catálogo</a>
 
   </nav>
 </header>
 
-  <main class="flex">
-    <div class="form-box">
-      
-        <h2>Produtos no carrinho</h2>
-      <section class="car-list">
-        <div id="produtosCarrinho"></div>
-      </section>
+  <main class="cart">
+    <h2 class="cart-title">Seu carrinho</h2>
+
+    <div class="cart-layout">
+      <div class="cart-main">
+
+        <!-- 1. ITENS -->
+        <section class="panel">
+          <h2><span class="step">1</span> Seus itens <small id="contagemItens"></small></h2>
+          <div id="produtosCarrinho"></div>
+        </section>
+
+        <!-- 2. ENTREGA E PAGAMENTO -->
+        <section class="panel">
+          <h2><span class="step">2</span> Entrega e pagamento</h2>
+          <form id="formulario">
+            <div class="campo">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" placeholder="Seu nome completo" autocomplete="name" required>
+            </div>
+            <div class="campo">
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel" inputmode="tel" required>
+            </div>
+            <div class="campo full">
+              <label for="endereco">Endereço de entrega</label>
+              <input type="text" id="endereco" placeholder="Rua, número, bairro e cidade" autocomplete="street-address" required>
+            </div>
+            <div class="campo">
+              <label for="regiao">Região</label>
+              <select id="regiao" required>
+                <option value="">Selecione sua região</option>
+                <option value="nordeste">Nordeste</option>
+                <option value="sul">Sul</option>
+                <option value="norte">Norte</option>
+                <option value="sudeste">Sudeste</option>
+                <option value="centro-oeste">Centro-Oeste</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="parcelas">Pagamento</label>
+              <select id="parcelas" required>
+                <option value="1">À vista</option>
+                <option value="2">2x</option>
+                <option value="3">3x</option>
+                <option value="5">5x</option>
+                <option value="6">6x</option>
+                <option value="7">7x</option>
+                <option value="8">8x</option>
+                <option value="9">9x</option>
+                <option value="10">10x</option>
+              </select>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <!-- RESUMO (fixo ao lado no desktop) -->
+      <aside class="resumo">
+        <h2>Resumo</h2>
+        <div class="linha"><span>Subtotal</span><strong id="subtotal"></strong></div>
+        <div class="linha"><span>Frete</span><strong id="frete"></strong></div>
+        <div class="linha"><span>Pagamento</span><strong id="parcela"></strong></div>
+        <div class="linha linha-total"><span>Total</span><strong id="totalFinal"></strong></div>
+        <button type="submit" form="formulario" id="enviarPedido" class="btn-enviar">Enviar pedido no WhatsApp</button>
+        <p class="resumo-nota">Você será levado ao WhatsApp para confirmar o pedido com a loja.</p>
+      </aside>
     </div>
-      <section class="resumo">
-        <h2>Resumo da compra</h2>
-        <p id="subtotal"></p>
-        <p id="frete"></p>
-        <p id="totalFinal"></p>
-        <p id="parcela"></p>
-      </section>
-    
-
-    <section class="form-box-2">
-      <h2>Dados para envio</h2>
-
-      <form id="formulario">
-        <input type="text" id="nome" placeholder="Seu nome" required>
-        <input type="text" id="endereco" placeholder="Seu endereço" required>
-        <input type="text" id="whatsapp" placeholder="Seu WhatsApp" required>
-
-        <select id="regiao" required>
-          <option value="">Selecione sua região</option>
-          <option value="nordeste">Nordeste</option>
-          <option value="sul">Sul</option>
-          <option value="norte">Norte</option>
-          <option value="sudeste">Sudeste</option>
-          <option value="centro-oeste">Centro-Oeste</option>
-        </select>
-
-        <select id="parcelas" required>
-          <option value="1">À vista</option>
-          <option value="2">2x</option>
-          <option value="3">3x</option>
-          <option value="5">5x</option>
-          <option value="6">6x</option>
-          <option value="7">7x</option>
-          <option value="8">8x</option>
-          <option value="9">9x</option>
-          <option value="10">10x</option>
-        </select>
-
-        <button type="submit">Enviar pedido no WhatsApp</button>
-      </form>
-
-    </section>
   </main>
 
 <!-- ============ FOOTER ============ -->

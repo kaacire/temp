@@ -370,7 +370,11 @@ if (areaCarrinho) {
 
     if (carrinho.length <= 0) {
 
-      areaCarrinho.innerHTML = "<p class='empyty'>Seu carrinho está vazio.</p>";
+      areaCarrinho.innerHTML = `
+        <div class="carrinho-vazio">
+          <p>Seu carrinho está vazio.</p>
+          <a class="btn-escuro" href="catalogo.html">Ver catálogo</a>
+        </div>`;
 
     } else {
 
@@ -380,23 +384,38 @@ if (areaCarrinho) {
         subtotal += subtotalItem;
 
         areaCarrinho.innerHTML += `
-          <div class="produto">
-            <img src="${item.imagem}">
-            <h3>${item.nome}</h3>
-            <p>${formatarDinheiro(item.preco)}</p>
-            <div class="controle-quantidade">
-              <button onclick="diminuirQuantidade(${item.id})">−</button>
-              <span>${item.quantidade}</span>
-              <button onclick="aumentarQuantidade(${item.id})">+</button>
+          <article class="item">
+            <img src="${item.imagem}" alt="${item.nome}">
+            <div class="item-info">
+              <h3>${item.nome}</h3>
+              <p class="item-preco">${formatarDinheiro(item.preco)} cada</p>
             </div>
-            <p>Subtotal: ${formatarDinheiro(subtotalItem)}</p>
-            <button class="remover-item" onclick="removerItem(${item.id})">Remover</button>
-          </div>
+            <div class="controle-quantidade">
+              <button aria-label="Diminuir quantidade" onclick="diminuirQuantidade(${item.id})">−</button>
+              <span>${item.quantidade}</span>
+              <button aria-label="Aumentar quantidade" onclick="aumentarQuantidade(${item.id})">+</button>
+            </div>
+            <p class="item-subtotal">${formatarDinheiro(subtotalItem)}</p>
+            <button class="remover-item" aria-label="Remover ${item.nome}" onclick="removerItem(${item.id})">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6"/></svg>
+            </button>
+          </article>
         `;
 
       });
 
     }
+
+    // contagem de itens e botão de envio
+    const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+    const contagem = document.getElementById("contagemItens");
+    if (contagem) {
+      contagem.innerText = totalItens > 0
+        ? `(${totalItens} ${totalItens === 1 ? "item" : "itens"})`
+        : "";
+    }
+    const botaoEnviar = document.getElementById("enviarPedido");
+    if (botaoEnviar) botaoEnviar.disabled = carrinho.length === 0;
 
     // atualiza resumo
     const selectRegiao = document.getElementById("regiao");
@@ -461,17 +480,17 @@ if (areaCarrinho) {
     const valorParcela = total / parcelas;
 
     document.getElementById("subtotal").innerText =
-      `Subtotal: ${formatarDinheiro(subtotal)}`;
+      formatarDinheiro(subtotal);
 
     document.getElementById("frete").innerText =
-      `Frete: ${formatarDinheiro(frete)}`;
+      formatarDinheiro(frete);
 
     document.getElementById("totalFinal").innerText =
-      `Total: ${formatarDinheiro(total)}`;
+      formatarDinheiro(total);
 
     document.getElementById("parcela").innerText =
       parcelas === 1
-        ? `À vista: ${formatarDinheiro(total)}`
+        ? "À vista"
         : `${parcelas}x de ${formatarDinheiro(valorParcela)}`;
 
   }
